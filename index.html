@@ -731,6 +731,14 @@
             margin-bottom: 3rem;
         }
 
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0;
+        }
+
         .social-links {
             display: flex;
             justify-content: center;
@@ -826,27 +834,23 @@
             transition: var(--transition);
         }
 
-        /* ── Mobile ── */
+        /* ── Tablet & Mobile (≤968px) ── */
         @media (max-width: 968px) {
-            .about-grid, .project-hero, .skills-grid {
-                grid-template-columns: 1fr;
-            }
 
+            /* Layout collapses */
+            .about-grid,
+            .project-hero,
+            .skills-grid,
             .projects-container {
                 grid-template-columns: 1fr;
             }
 
-            .project-hero {
-                grid-column: span 1;
-            }
+            .project-hero { grid-column: span 1; }
 
-            section {
-                padding: 4rem 0;
-            }
+            section { padding: 4rem 0; }
 
-            .hamburger {
-                display: flex;
-            }
+            /* Nav */
+            .hamburger { display: flex; }
 
             .nav-links {
                 position: fixed;
@@ -861,16 +865,102 @@
                 transform: translateY(-150%);
                 transition: transform 0.4s ease;
                 display: flex;
+                z-index: 99;
             }
 
-            .nav-links.active {
-                transform: translateY(0);
-            }
+            .nav-links.active { transform: translateY(0); }
 
+            /* Hero CTA: stack buttons, full width for easy tapping */
             .hero-cta {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: stretch;
+                width: 100%;
+                max-width: 320px;
             }
+
+            .hero-cta .btn {
+                text-align: center;
+                width: 100%;
+            }
+
+            /* VulnScout visual: reduce height so content isn't buried */
+            .project-visual { min-height: 220px; }
+
+            /* Contact card: reduce padding so it breathes on small screens */
+            .contact-card { padding: 2rem 1.5rem; }
+
+            /* Contact title: scale down */
+            .contact-h { font-size: 1.75rem; }
+
+            /* Email button: prevent overflow on narrow screens */
+            .contact-card .btn-primary {
+                font-size: 0.75rem;
+                padding: 0.85rem 1rem;
+                word-break: break-all;
+                width: 100%;
+            }
+
+            /* Contact buttons: stack cleanly */
+            .contact-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .contact-buttons .btn {
+                text-align: center;
+                width: 100%;
+            }
+
+            /* Social links: tighter gap */
+            .social-links { gap: 1.25rem; }
+
+            /* Section titles: prevent wrapping awkwardly */
+            .section-title { font-size: 1.75rem; }
+
+            /* Timeline role: slightly smaller */
+            .timeline-role { font-size: 1.2rem; }
+
+            /* Roadmap grid: tighter gap on tablet */
+            .future-grid { gap: 2rem; }
+
+            /* Skill group title: slightly smaller */
+            .skill-group-title { font-size: 1.1rem; }
+        }
+
+        /* ── Small phones (≤480px) ── */
+        @media (max-width: 480px) {
+
+            .container { padding: 0 1.25rem; }
+
+            /* Hero: tighter spacing */
+            #hero { padding-top: 4rem; }
+            .hero-pre { font-size: 0.9rem; }
+            .hero-desc { font-size: 0.95rem; }
+
+            /* Stats: single column on very small screens */
+            .about-stats { grid-template-columns: 1fr; }
+
+            /* Project info: less padding */
+            .project-info { padding: 1.75rem; }
+
+            /* Contact card: minimal padding */
+            .contact-card { padding: 1.75rem 1.25rem; }
+
+            /* Roadmap: 2x2 grid instead of 4-in-a-row */
+            .future-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                justify-items: center;
+            }
+
+            /* Footer: smaller text */
+            footer { padding: 2.5rem 0; font-size: 0.75rem; }
+
+            /* Scroll-to-top: move slightly in from edge */
+            #scroll-top { bottom: 1.25rem; right: 1.25rem; }
         }
     </style>
 </head>
@@ -1143,9 +1233,10 @@
                     <a href="https://www.linkedin.com/in/rodrigo-saraiva-02a06b242/" target="_blank" rel="noopener" class="social-item">LINKEDIN</a>
                     <a href="mailto:rodrigo2004saraiva@gmail.com" class="social-item">EMAIL</a>
                 </div>
-                <a href="mailto:rodrigo2004saraiva@gmail.com" class="btn btn-primary">rodrigo2004saraiva@gmail.com</a>
-                <br>
-                <a href="cv_rodrigo_saraiva.pdf" download class="btn btn-ghost" style="margin-top:1.5rem;">DOWNLOAD_CV</a>
+                <div class="contact-buttons">
+                    <a href="mailto:rodrigo2004saraiva@gmail.com" class="btn btn-primary">rodrigo2004saraiva@gmail.com</a>
+                    <a href="cv_rodrigo_saraiva.pdf" download class="btn btn-ghost">DOWNLOAD_CV</a>
+                </div>
                 <p class="footer-contact">LOC: Covilhã, Portugal | PHONE: +351 926551228</p>
             </div>
         </section>
